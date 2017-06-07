@@ -5,7 +5,7 @@
 
 - name: Ensure language packages are installed
   apt: pkg={{ item }} state=installed
-  with_items: locale_language_packs
+  with_items: "{{ locale_language_packs }}"
   sudo: yes
   register: locale_languages
 
@@ -50,5 +50,5 @@
 
 - name: Ensure locales is generated
   locale_gen: name={{ item.locale }} state={{ item.state }}
-  with_items: locale_locales
+  with_items: "{{ locale_locales }}"
   sudo: yes
